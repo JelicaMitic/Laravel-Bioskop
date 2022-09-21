@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Reziser;
+use App\Http\Resources\ReziserResource;
+use Illuminate\Http\Request;
+
+
+class ReziserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return ReziserResource::collection(Reziser::all());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function store(Request $request)
+     {
+        $input=$request->all();
+        $reziser= Reziser::create($input);
+        return new ReziserResource($reziser,200);
+
+     
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Reziser  $reziser
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Reziser $reziser)
+    {
+        return new ReziserResource($reziser);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Reziser  $reziser
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Reziser $reziser)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Reziser  $reziser
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Reziser $reziser)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Reziser  $reziser
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Reziser $reziser)
+    {
+        $reziser ->delete();
+
+        return response()->json([
+            'Poruka: ' => 'Reziser je obrisan!'
+       ] );
+    }
+}
