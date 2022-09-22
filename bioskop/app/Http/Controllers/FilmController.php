@@ -69,7 +69,6 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-
     public function update(Request $request, Film $film)
     {
         $validator = Validator::make($request->all(), [
@@ -95,6 +94,7 @@ class FilmController extends Controller
          // 'naziv','godina','zanr_id','reziser_id','opis'
     }
    
+    
 
     /**
      * Remove the specified resource from storage.
